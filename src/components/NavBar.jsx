@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaSquarePlus } from "react-icons/fa6";
 import { Link } from "react-router-dom"
 
 const NavBar = () => {
+    // Define the state and setter for searchText
+  const [searchText, setSearchText] = useState('');
+
+  // Define the function to handle changes to the search input
+  const handleSearchText = (text) => {
+    setSearchText(text);
+  };
   return (
     <nav className="navbar bg-body-tertiary py-50" style={{ padding: "20px" }}>
       <div className="container d-flex justify-content-around">
@@ -18,7 +25,7 @@ const NavBar = () => {
               className="form-control"
               placeholder="Search"
               value={searchText}
-              onChange={(e) => handelSearchText(e.target.value)}
+              onChange={(e) => handleSearchText(e.target.value)}
             />
             <button className="btn btn-outline-success" type="submit">
               Search

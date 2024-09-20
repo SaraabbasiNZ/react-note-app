@@ -2,6 +2,7 @@ import React from 'react'
 import { BiSolidTrashAlt } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import "./NoteDetailPage.css"
+import { Link } from 'react-router-dom';
 
 const NoteDetailPage = () => {
   return (
@@ -12,7 +13,10 @@ const NoteDetailPage = () => {
     <p className="note-date font-12 text-muted me-5">last updated: 11 March 2009</p>
     </span>
     <span className="button-group">
-      <button className="btn btn-primary"><FiEdit /><span>Edit</span></button>
+        <Link to="/edit-note">
+        <button className="btn btn-primary"><FiEdit /><span>Edit</span></button>
+        </Link>
+      
       <button className="btn btn-danger"><BiSolidTrashAlt /><span>Delete</span></button>
     </span>
     <p className="description">

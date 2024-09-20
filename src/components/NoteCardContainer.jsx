@@ -1,17 +1,13 @@
 import React from 'react'
 import NoteCard from './NoteCard'
 
-const NoteCardContainer = () => {
+const NoteCardContainer = (notes) => {
   return (
     <div className="container">
-        <div className="note-has-grid row">
-            <NoteCard />
-            <NoteCard />
-            <NoteCard />
-            <NoteCard />
-            <NoteCard />
-            <NoteCard />
-        </div>
+    <div className="note-has-grid row">
+      <NoteCard />
+            
+    </div>
     </div>
   )
 }

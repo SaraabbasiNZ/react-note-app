@@ -10,13 +10,16 @@ import axios from 'axios'
 
 const App = () => {
 
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true)
     axios.get("https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net/notes/")
     .then(res => {
       console.log(res.data)
       setNotes(res.data)
+      setIsLoading(false)
     })
     .catch(err => {
       console.log(err.message)

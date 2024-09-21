@@ -13,7 +13,7 @@ const App = () => {
   const [notes, setNotes] = useState([])
 
   useEffect(() => {
-    axios.get("https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net")
+    axios.get("https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net/notes/")
     .then(res => {
       console.log(res.data)
       setNotes(res.data)

@@ -53,6 +53,12 @@ const App = () => {
       .catch((err) => console.log(err.message));
   }
 
+  const deleteNote = (slug) => {
+    axios
+      .delete(`https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net/notes/${slug}`)
+      .catch((err) => console.log(err.message));
+  };
+
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>
       <Route index element={<HomePage notes={notes} isLoading={isLoading} />} />

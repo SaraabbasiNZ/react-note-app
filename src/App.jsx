@@ -57,7 +57,7 @@ const App = () => {
     <Route path='/' element={<MainLayout />}>
       <Route index element={<HomePage notes={notes} isLoading={isLoading} />} />
       <Route path= "/add-note" element={<AddNotePage addNote={addNote} />} />
-      <Route path= "/edit-note" element={<EditNotePage/>} />
+      <Route path= "/edit-note" element={<EditNotePage updateNote={updateNote} />} />
       <Route path= "/notes/:slug" element={<NoteDetailPage />} />
     </Route>
     

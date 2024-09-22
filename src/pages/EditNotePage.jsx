@@ -3,7 +3,7 @@ import "./AddNotePage.css"
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const EditNotePage = () => {
+const EditNotePage = ({updateNote}) => {
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");

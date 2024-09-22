@@ -13,10 +13,15 @@ const App = () => {
 
   const [notes, setNotes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const [filterText, setFilterText] = useState("");
 
   const handleFilterText = (val) => {
     setFilterText(val);
+  };
+
+  const handelSearchText = (val) => {
+    setSearchText(val);
   };
 
   const filteredNotes =
@@ -27,13 +32,24 @@ const App = () => {
       : filterText === "IMPORTANT"
       ? notes.filter((note) => note.category == "IMPORTANT")
       : notes;
+
+      useEffect(() => {
+        if(searchText.length < 3) return;
+        axios.get(`https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net/notes-search/?search=${searchText}`)
+        .then(res => {
+          console.log(res.data)
+          setNotes(res.data)
+        })
+        .catch(err => console.log(err.message))
+      }, [searchText])
+
   
 
   useEffect(() => {
     setIsLoading(true)
     axios.get("https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net/notes/")
     .then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       setNotes(res.data)
       setIsLoading(false)
     })
@@ -75,7 +91,7 @@ const App = () => {
   };
 
   const router = createBrowserRouter(createRoutesFromElements(
-    <Route path='/' element={<MainLayout />}>
+    <Route path='/' element={<MainLayout searchText={searchText} handelSearchText={handelSearchText} />}>
       <Route index element={<HomePage notes={filteredNotes} isLoading={isLoading} handleFilterText={handleFilterText} />} />
       <Route path= "/add-note" element={<AddNotePage addNote={addNote} />} />
       <Route path= "/edit-note" element={<EditNotePage updateNote={updateNote} />} />

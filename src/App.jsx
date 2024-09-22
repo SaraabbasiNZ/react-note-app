@@ -6,6 +6,7 @@ import AddNotePage from './pages/AddNotePage'
 import NoteDetailPage from './pages/NoteDetailPage'
 import EditNotePage from './pages/EditNotePage'
 import axios from 'axios'
+import { toast } from "react-toastify";
 
 
 const App = () => {

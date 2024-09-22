@@ -42,6 +42,17 @@ const App = () => {
       });
   };
 
+  const updateNote = (data, slug) => {
+    axios
+      .put(`https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net/notes/${slug}/`, data)
+      .then((res) => {
+        console.log(res.data);
+        toast.success("Note updated succesfully");
+      })
+
+      .catch((err) => console.log(err.message));
+  }
+
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>
       <Route index element={<HomePage notes={notes} isLoading={isLoading} />} />

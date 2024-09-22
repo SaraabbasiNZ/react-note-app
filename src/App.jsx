@@ -26,10 +26,25 @@ const App = () => {
     })
   }, [])
 
+
+  const addNote = (data) => {
+    axios
+      .post("https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net/notes/", data)
+      .then((res) => {
+        setNotes([...notes, data]);
+        toast.success("A new note has been added");
+        console.log(res.data);
+      })
+
+      .catch((err) => {
+        console.log(console.log(err.message));
+      });
+  };
+
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>
       <Route index element={<HomePage notes={notes} isLoading={isLoading} />} />
-      <Route path= "/add-note" element={<AddNotePage />} />
+      <Route path= "/add-note" element={<AddNotePage addNote={addNote} />} />
       <Route path= "/edit-note" element={<EditNotePage/>} />
       <Route path= "/notes/:slug" element={<NoteDetailPage />} />
     </Route>

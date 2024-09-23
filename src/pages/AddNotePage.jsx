@@ -1,5 +1,6 @@
-import React from 'react'
-import "./AddNotePage.css"
+import React, { useState } from "react";
+import "./AddNotePage.css";
+import { useNavigate } from "react-router-dom";
 
 const AddNotePage = ({addNote}) => {
 
@@ -34,7 +35,6 @@ const AddNotePage = ({addNote}) => {
           Title
         </label>
         <input
-          type="text"
           className="form-control"
           id="exampleFormControlInput1"
           placeholder="Enter note's title"
@@ -58,7 +58,7 @@ const AddNotePage = ({addNote}) => {
       </div>
 
       <div className="mb-3">
-       <label htmlFor="exampleFormControlTextarea1" className="form-label">
+        <label htmlFor="exampleFormControlTextarea1" className="form-label">
           Note's category
         </label>
        <select 
@@ -67,8 +67,7 @@ const AddNotePage = ({addNote}) => {
           value={category} 
           style={{height: "40px"}}
           onChange={(e) => setCategory(e.target.value)}
-          >
-
+        >
 
           <option value="">Pick a category</option>
           <option value="BUSINESS">Business</option>
@@ -77,12 +76,14 @@ const AddNotePage = ({addNote}) => {
         </select>
       </div>
 
-        
 
-
-      <button className="btn btn-primary d-flex justify-content-center" style={{width:"100%"}}>Add Note</button>
+      <button 
+        className="btn btn-primary d-flex justify-content-center" 
+        style={{width:"100%"}}>
+        Add Note
+      </button>
     </form>
-  )
-}
+  );
+};
 
-export default AddNotePage
+export default AddNotePage;

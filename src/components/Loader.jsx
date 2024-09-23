@@ -8,7 +8,7 @@ const override = {
     borderColor: "purple",
   };
 
-const Loader = (loading) => {
+const Loader = ({loading}) => {
   return (
     <ClipLoader
         loading={loading}

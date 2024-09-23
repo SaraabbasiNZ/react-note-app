@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FaSquarePlus } from "react-icons/fa6";
 import { Link } from "react-router-dom"
 
@@ -23,9 +23,7 @@ const NavBar = ({searchText, handleSearchText}) => {
           >
             <input
               className="form-control"
-              type="search"
               placeholder="Search"
-              aria-label="Search"
               value={searchText}
               onChange={(e) => handleSearchText(e.target.value)}
             />

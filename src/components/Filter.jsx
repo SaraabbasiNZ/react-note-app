@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Filter = (handleFilterText) => {
   return (
@@ -15,7 +15,7 @@ const Filter = (handleFilterText) => {
         <option value="IMPORTANT">Important</option>
       </select>
     </div>
-  )
-}
+  );
+};
 
-export default Filter
+export default Filter;

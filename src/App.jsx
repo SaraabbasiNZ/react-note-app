@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react'
-import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import MainLayout from './layouts/MainLayout'
-import AddNotePage from './pages/AddNotePage'
-import NoteDetailPage from './pages/NoteDetailPage'
-import EditNotePage from './pages/EditNotePage'
-import axios from 'axios'
+import { useEffect, useState } from 'react';
+import HomePage from './pages/HomePage';
+import MainLayout from './layouts/MainLayout';
+import AddNotePage from './pages/AddNotePage';
+import NoteDetailPage from './pages/NoteDetailPage';
+import EditNotePage from './pages/EditNotePage';
+import axios from 'axios';
 import { toast } from "react-toastify";
+import { 
+  createBrowserRouter, 
+  createRoutesFromElements, 
+  RouterProvider, 
+  Route } from 'react-router-dom';
 
 
 const App = () => {
@@ -46,17 +50,18 @@ const App = () => {
   
 
   useEffect(() => {
-    setIsLoading(true)
-    axios.get("https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net/notes/")
-    .then(res => {
-      // console.log(res.data)
-      setNotes(res.data)
-      setIsLoading(false)
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-  }, [])
+    setIsLoading(true);
+    axios
+      .get("https://8000-saraabbasin-simplenotep-mybof7hzgwz.ws.codeinstitute-ide.net/notes/")
+      .then((res) => {
+        // console.log(res.data);
+        setNotes(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
 
 
   const addNote = (data) => {
@@ -82,7 +87,7 @@ const App = () => {
       })
 
       .catch((err) => console.log(err.message));
-  }
+  };
 
   const deleteNote = (slug) => {
     axios
@@ -90,18 +95,42 @@ const App = () => {
       .catch((err) => console.log(err.message));
   };
 
-  const router = createBrowserRouter(createRoutesFromElements(
-    <Route path='/' element={<MainLayout searchText={searchText} handelSearchText={handelSearchText} />}>
-      <Route index element={<HomePage notes={filteredNotes} isLoading={isLoading} handleFilterText={handleFilterText} />} />
-      <Route path= "/add-note" element={<AddNotePage addNote={addNote} />} />
-      <Route path= "/edit-note" element={<EditNotePage updateNote={updateNote} />} />
-      <Route path= "/notes/:slug" element={<NoteDetailPage />} />
-    </Route>
-    
-  ))
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route 
+        path='/' 
+        element={
+          <MainLayout 
+            searchText={searchText} 
+            handelSearchText={handelSearchText} 
+          />
+        }
+      >
+        <Route 
+          index 
+          element={
+            <HomePage 
+              notes={filteredNotes} 
+              loading={isLoading} 
+              handleFilterText={handleFilterText} 
+            />
+          } 
+        />
+        <Route path= "/add-note" element={<AddNotePage addNote={addNote} />} />
+        <Route 
+          path= "/edit-note/:slug" 
+          element={<EditNotePage updateNote={updateNote} />} 
+        />
+        <Route 
+          path= "/notes/:slug" 
+          element={<NoteDetailPage deleteNote={deleteNote} />} 
+        />
+      </Route>
+    )
+  );
 
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 
-}
+};
 
-export default App
+export default App;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./AddNotePage.css"
+import "./AddNotePage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -48,7 +48,6 @@ const EditNotePage = ({updateNote}) => {
           Title
         </label>
         <input
-          type="text"
           className="form-control"
           id="exampleFormControlInput1"
           placeholder="Enter note's title"
@@ -72,25 +71,31 @@ const EditNotePage = ({updateNote}) => {
       </div>
 
       <div className="mb-3">
-      <label htmlFor="exampleFormControlTextarea1" className="form-label">
+        <label htmlFor="exampleFormControlTextarea1" className="form-label">
           Note's category
         </label>
-      <select className="form-select" aria-label="Default select example" 
+        <select 
+          className="form-select" 
+          aria-label="Default select example" 
           value={category}
-          style={{height: "40px"}}>
+          style={{height: "40px"}}
+          onChange={(e) => setCategory(e.target.value)}
+        >
           <option value="">Pick a category</option>
-          <option value="1">Business</option>
-          <option value="2">Personal</option>
-          <option value="3">Important</option>
+          <option value="BUSINESS">Business</option>
+          <option value="PERSONAL">Personal</option>
+          <option value="IMPORTANT">Important</option>
         </select>
       </div>
 
         
-
-
-      <button className="btn btn-primary d-flex justify-content-center" style={{width:"100%"}}>Update Note</button>
+      <button 
+        className="btn btn-primary d-flex justify-content-center" 
+        style={{width:"100%"}}>
+          Update Note
+      </button>
     </form>
-  )
-}
+  );
+};
 
-export default EditNotePage
+export default EditNotePage;

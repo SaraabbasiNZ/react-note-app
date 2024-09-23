@@ -1,5 +1,5 @@
-import React from 'react'
-import NoteCard from './NoteCard'
+import React from 'react';
+import NoteCard from './NoteCard';
 import Loader from './Loader';
 
 const NoteCardContainer = ({notes, loading}) => {

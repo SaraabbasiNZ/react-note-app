@@ -16,7 +16,7 @@ const Modal = ({handleIsOpen, deleteNote}) => {
   return (
     <div className="c-modal-overlay">
       <div className="c-modal">
-        <button className="close-button">×</button>
+        <button className="close-button" onClick={handleIsOpen}>×</button>
         <div className="c-modal-content">
           <h2>Delete Note</h2>
           <p>Are you want to Delete this note?</p>

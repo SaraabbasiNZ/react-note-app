@@ -2,20 +2,24 @@ import React from 'react';
 import NoteCard from './NoteCard';
 import Loader from './Loader';
 
-const NoteCardContainer = ({notes, loading}) => {
+const NoteCardContainer = ({ notes, loading }) => {
+  if (loading) {
+    return <Loader loading={loading} />;
+  }
 
-  const safeNotes = Array.isArray(notes) ? notes : [];
-  
+  if (notes.length === 0) {
+    return <p>No notes found.</p>;
+  }
+
   return (
     <div className="container">
       <div className="note-has-grid row">
-        { loading && <Loader loading={loading} /> }
-        {safeNotes.map(note => (
+        {notes.map(note => (
           <NoteCard key={note.id} note={note} />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NoteCardContainer
+export default NoteCardContainer;

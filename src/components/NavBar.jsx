@@ -42,6 +42,19 @@ const NavBar = ({searchText, handleSearchText}) => {
             <FaSquarePlus className="me-2 fs-6" /> Add Notes
           </button>
         </Link>
+
+        {/* Add links for Register and Login */}
+        <Link to="/register" style={{ textDecoration: "none", marginLeft: "10px" }}>
+          <button className="btn btn-outline-secondary btn-md" type="button">
+            Register
+          </button>
+        </Link>
+        <Link to="/login" style={{ textDecoration: "none", marginLeft: "10px" }}>
+          <button className="btn btn-outline-secondary btn-md" type="button">
+            Login
+          </button>
+        </Link>
+        
       </div>
     </nav>
   )

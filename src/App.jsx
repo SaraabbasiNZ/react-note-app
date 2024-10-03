@@ -4,6 +4,9 @@ import MainLayout from './layouts/MainLayout';
 import AddNotePage from './pages/AddNotePage';
 import NoteDetailPage from './pages/NoteDetailPage';
 import EditNotePage from './pages/EditNotePage';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import ProtectedRoute from './ProtectedRoute'; // Import the ProtectedRoute component
 import axios from 'axios';
 import { toast } from "react-toastify";
 import { 
@@ -13,8 +16,10 @@ import {
   Route 
 } from 'react-router-dom';
 import { API_BASE_URL, MIN_SEARCH_LENGTH } from './config';
+import { useAuth } from './AuthContext'; // Import useAuth
 
 const App = () => {
+  const { user, login } = useAuth(); // Use the authentication context
   const [notes, setNotes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -62,7 +67,6 @@ const App = () => {
       });
   }, []);
 
-  
   const addNote = (data) => {
     axios.post(`${API_BASE_URL}/notes/`, data)
       .then((res) => {
@@ -114,24 +118,34 @@ const App = () => {
           />
         }
       >
+        <Route index element={<HomePage notes={filteredNotes} loading={isLoading} handleFilterText={handleFilterText} />} />
+        
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login login={login} />} />
+
         <Route 
-          index 
+          path="/add-note" 
           element={
-            <HomePage 
-              notes={filteredNotes} 
-              loading={isLoading} 
-              handleFilterText={handleFilterText} 
-            />
+            <ProtectedRoute>
+              <AddNotePage addNote={addNote} />
+            </ProtectedRoute>
           } 
         />
-        <Route path="/add-note" element={<AddNotePage addNote={addNote} />} />
         <Route 
           path="/edit-note/:slug" 
-          element={<EditNotePage updateNote={updateNote} />} 
+          element={
+            <ProtectedRoute>
+              <EditNotePage updateNote={updateNote} />
+            </ProtectedRoute>
+          } 
         />
         <Route 
           path="/notes/:slug" 
-          element={<NoteDetailPage deleteNote={deleteNote} />} 
+          element={
+            <ProtectedRoute>
+              <NoteDetailPage deleteNote={deleteNote} />
+            </ProtectedRoute>
+          } 
         />
       </Route>
     )

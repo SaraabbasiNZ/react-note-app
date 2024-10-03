@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-import { AuthProvider } from './AuthContext'; // Import the AuthProvider
+import AuthProvider from './AuthContext'; // Import the AuthProvider
 import "bootstrap/dist/css/bootstrap.css";
 import './index.css';
 

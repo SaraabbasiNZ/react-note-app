@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import HomePage from './pages/HomePage';
 import MainLayout from './layouts/MainLayout';
 import AddNotePage from './pages/AddNotePage';
@@ -16,10 +16,10 @@ import {
   Route 
 } from 'react-router-dom';
 import { API_BASE_URL, MIN_SEARCH_LENGTH } from './config';
-import { useAuth } from './AuthContext'; // Import useAuth
+import { AuthContext } from './AuthContext';
 
 const App = () => {
-  const { user, login } = useAuth(); // Use the authentication context
+  const { user, login } = useContext(AuthContext); // Use the authentication context
   const [notes, setNotes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchText, setSearchText] = useState("");

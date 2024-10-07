@@ -1,7 +1,7 @@
 {
   "name": "react-note-app",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.0",
   "type": "module",
   "engines": {
     "node": ">=16.x"
@@ -11,8 +11,7 @@
     "build": "vite build",
     "start": "vite preview",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "test": "echo \"No tests specified\" && exit 0"  // Placeholder for future tests
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.7.7",
@@ -23,8 +22,7 @@
     "react-router-dom": "^6.26.2",
     "react-spinners": "^0.14.1",
     "react-toastify": "^10.0.5",
-    "serve": "^14.2.3",
-    "dotenv": "^16.0.0"  // Optional, for environment variable management
+    "serve": "^14.2.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",

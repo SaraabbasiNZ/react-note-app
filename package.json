@@ -17,6 +17,7 @@
     "postinstall": "npm install"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^X.Y.Z",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "react": "^18.3.1",
@@ -26,8 +27,7 @@
     "react-spinners": "^0.14.1",
     "react-toastify": "^10.0.5",
     "serve": "^14.2.3",
-    "vite": "^5.4.8",
-    "@vitejs/plugin-react": "^latest-version"
+    "vite": "^5.4.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
